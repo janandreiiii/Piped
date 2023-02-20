@@ -8,7 +8,7 @@
             </keep-alive>
         </router-view>
 
-        <FooterComponent />
+        <FooterComponent :config="config" />
     </div>
 </template>
 
@@ -26,6 +26,7 @@ export default {
     data() {
         return {
             theme: "dark",
+            config: null,
         };
     },
     methods: {
@@ -38,12 +39,21 @@ export default {
             const root = document.querySelector(":root");
             this.theme == "dark" ? root.classList.add("dark") : root.classList.remove("dark");
         },
+        async onConfigLoaded() {},
     },
     mounted() {
         this.setTheme();
         darkModePreference.addEventListener("change", () => {
             this.setTheme();
         });
+
+        this.fetchJson(this.authApiUrl() + "/config")
+            .then(config => {
+                this.config = config;
+            })
+            .then(() => {
+                this.onConfigLoaded();
+            });
 
         if ("indexedDB" in window) {
             const request = indexedDB.open("piped-db", 3);
