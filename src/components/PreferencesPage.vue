@@ -323,6 +323,9 @@
 
 <script>
 import CountryMap from "@/utils/CountryMaps/en.json";
+import { state } from "../utils/store";
+import { encryptAESGCM, decodeBase64ToArray } from "../utils/encryptionUtils";
+import { compressGzip } from "../utils/compressionUtils";
 export default {
     data() {
         return {
@@ -533,6 +536,53 @@ export default {
                 localStorage.setItem("disableLBRY", this.disableLBRY);
                 localStorage.setItem("proxyLBRY", this.proxyLBRY);
                 localStorage.setItem("hideWatched", this.hideWatched);
+
+                const config = state.config;
+
+                const key = this.getPreferenceString("e2ee_key", null, false);
+
+                if (config.s3Enabled && this.authenticated && key) {
+                    const statResult = await this.fetchJson(
+                        this.authApiUrl() + "/storage/stat",
+                        {
+                            file: "pipedpref",
+                        },
+                        {
+                            headers: {
+                                Authorization: this.getAuthToken(),
+                            },
+                        },
+                    );
+
+                    const etag = statResult.etag;
+
+                    // export localStorage to JSON
+                    const localStorageJson = {};
+                    for (let i = 0; i < localStorage.length; i++) {
+                        const key = localStorage.key(i);
+                        localStorageJson[key] = localStorage.getItem(key);
+                    }
+
+                    const importedKey = decodeBase64ToArray(key).buffer;
+
+                    const data = await compressGzip(JSON.stringify(localStorageJson));
+
+                    const encrypted = await encryptAESGCM(data, importedKey);
+
+                    await this.fetchJson(
+                        this.authApiUrl() + "/storage/put",
+                        {},
+                        {
+                            method: "POST",
+                            headers: {
+                                Authorization: this.getAuthToken(),
+                                "x-file-name": "pipedpref",
+                                "x-last-etag": etag,
+                            },
+                            body: encrypted,
+                        },
+                    );
+                }
 
                 if (shouldReload) window.location.reload();
             }
