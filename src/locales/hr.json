@@ -41,7 +41,7 @@
         "donations": "Donacije za razvoj",
         "auto_play_next_video": "Automatski reproduciraj idući video",
         "loop_this_video": "Ponavljaj ovaj video",
-        "import_from_json": "Uvezi iz JSON/CSV formata",
+        "import_from_json": "Uvezi iz JSON formata",
         "export_to_json": "Izvezi u JSON",
         "no": "Ne",
         "yes": "Da",
@@ -153,10 +153,15 @@
         "show_search_suggestions": "Prikaži prijedloge pretrage",
         "delete_automatically": "Automatski izbriši nakon",
         "enable_dearrow": "Aktiviraj DeArrow",
-        "generate_qrcode": "Generiraj QR kod"
+        "generate_qrcode": "Generiraj QR kod",
+        "import_from_json_csv": "Uvezi iz JSON/CSV formata",
+        "download_frame": "Preuzmi kadar",
+        "instance_privacy_policy": "Politika privatnosti",
+        "add_to_group": "Dodaj grupi"
     },
     "player": {
-        "watch_on": "Gledaj na {0}"
+        "watch_on": "Gledaj na {0}",
+        "failed": "Neuspjelo s greškom {0}. Pogledaj zapise za više informacija"
     },
     "titles": {
         "subscriptions": "Pretplate",
@@ -211,6 +216,8 @@
         "hours": "{amount} h",
         "days": "{amount} dan(a)",
         "weeks": "{amount} tj",
-        "months": "{amount} mj"
+        "months": "{amount} mj",
+        "login_note": "Prijavi se s računom stvorenim na ovoj instanci.",
+        "register_note": "Registriraj račun za ovu Piped instancu. To će ti omogućiti sinkronizaciju tvojih pretplata i playlista s tvojim računom kako bi se spremile na poslužitelju. Možeš koristiti sve značajke bez računa, ali će se svi podaci spremiti u lokalnu predmemoriju tvog preglednika. NEMOJ koristiti e-mail adresu kao korisničko ime i odaberi sigurnu lozinku koju ne koristiš negdje drugdje."
     }
 }

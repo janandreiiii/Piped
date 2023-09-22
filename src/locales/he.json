@@ -18,7 +18,7 @@
         "dearrow": "DeArrow"
     },
     "player": {
-        "watch_on": "לצפות ב־{0}",
+        "watch_on": "הצגה ב־{0}",
         "failed": "חל כשל עם קוד שגיאה {0}, מידע נוסף ביומנים"
     },
     "actions": {
@@ -146,7 +146,9 @@
         "enable_dearrow": "הפעלת DeArrow",
         "generate_qrcode": "יצירת קוד QR",
         "import_from_json_csv": "ייבוא מ־JSON/CSV",
-        "download_frame": "הורדת תמונית"
+        "download_frame": "הורדת תמונית",
+        "instance_privacy_policy": "מדיניות פרטיות",
+        "add_to_group": "הוספה לקבוצה"
     },
     "comment": {
         "pinned_by": "ננעץ על ידי {author}",
@@ -208,7 +210,9 @@
         "days": "{amount} ימים",
         "weeks": "{amount} שבועות",
         "months": "{amount} חודשים",
-        "hours": "{amount} שעות"
+        "hours": "{amount} שעות",
+        "login_note": "כניסה עם חשבון שנוצר בעותק הזה.",
+        "register_note": "הרשמה ל־Piped הזה. תאפשר לך לסנכרן את המינויים ואת רשימות הנגינה שלך עם החשבון שלך כך שיאוחסנו בצד השרת. אפשר להשתמש בכל התכונות בלי חשבון אך כל הנתונים יאוחסנו במטמון המקומי של הדפדפן שלך. נא לוודא שלא בחרת בכתובת דוא״ל כשם המשתמש שלך ורצוי לבחור בסיסמה מאובטחת שלא משמשת אותך בשום מקום אחר."
     },
     "subscriptions": {
         "subscribed_channels_count": "נרשמת אל: {0}"

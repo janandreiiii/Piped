@@ -90,8 +90,11 @@
         </div>
         <div class="mb-2 mt-3 h-70 flex flex-col overflow-y-scroll">
             <div v-for="subscription in subscriptions" :key="subscription.name">
-                <div class="mr-3 flex justify-between">
-                    <span>{{ subscription.name }}</span>
+                <div class="mr-3 flex items-center justify-between">
+                    <a :href="subscription.url" target="_blank" class="flex items-center overflow-hidden">
+                        <img :src="subscription.avatar" class="h-8 w-8 rounded-full" />
+                        <span class="ml-2">{{ subscription.name }}</span>
+                    </a>
                     <input
                         type="checkbox"
                         class="checkbox"
@@ -140,18 +143,8 @@ export default {
         this.channelGroups.push(this.selectedGroup);
 
         if (!window.db) return;
-        const cursor = this.getChannelGroupsCursor();
-        cursor.onsuccess = e => {
-            const cursor = e.target.result;
-            if (cursor) {
-                const group = cursor.value;
-                this.channelGroups.push({
-                    groupName: group.groupName,
-                    channels: JSON.parse(group.channels),
-                });
-                cursor.continue();
-            }
-        };
+
+        this.loadChannelGroups();
     },
     activated() {
         document.title = "Subscriptions - Piped";
@@ -169,6 +162,10 @@ export default {
                     channels: this.getUnauthenticatedChannels(),
                 });
             }
+        },
+        async loadChannelGroups() {
+            const groups = await this.getChannelGroups();
+            this.channelGroups.push(...groups);
         },
         handleButton(subscription) {
             const channelId = subscription.url.split("/")[2];

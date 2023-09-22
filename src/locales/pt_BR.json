@@ -55,7 +55,7 @@
         "view_ssl_score": "Ver Pontuação SSL",
         "disable_lbry": "Desativar LBRY para Streaming",
         "enable_lbry_proxy": "Ativar Proxy para LBRY",
-        "import_from_json": "Importar de JSON/CSV",
+        "import_from_json": "Importar de JSON",
         "loop_this_video": "Repetir este Vídeo",
         "instances_list": "Lista de Instâncias",
         "clear_history": "Limpar Histórico",
@@ -81,6 +81,7 @@
         "status_page": "Estado",
         "source_code": "Código fonte",
         "instance_donations": "Doações de instâncias",
+        "instance_privacy_policy": "Política de Privacidade",
         "instance_auth_selection": "Instância de Autenticação",
         "clone_playlist_success": "Clonada com sucesso!",
         "download_as_txt": "Baixar como .txt",
@@ -123,7 +124,9 @@
         "delete_automatically": "Deletar automaticamente após",
         "generate_qrcode": "Gerar código QR",
         "enable_dearrow": "Ativar DeArrow",
-        "import_from_json_csv": "Importar de JSON/CSV"
+        "import_from_json_csv": "Importar de JSON/CSV",
+        "download_frame": "Baixar quadro",
+        "add_to_group": "Adicionar ao grupo"
     },
     "titles": {
         "history": "Histórico",
@@ -144,7 +147,8 @@
         "dearrow": "DeArrow"
     },
     "player": {
-        "watch_on": "Assistir no {0}"
+        "watch_on": "Ver em {0}",
+        "failed": "Falhou com código de erro {0}, veja os logs para mais informações"
     },
     "comment": {
         "pinned_by": "Fixado por {author}",
@@ -206,7 +210,9 @@
         "hours": "{amount} hora(s)",
         "days": "{amount} dia(s)",
         "weeks": "{amount} semana(s)",
-        "months": "{amount} mês/meses"
+        "months": "{amount} mês/meses",
+        "login_note": "Entre com uma conta criada nesta instância.",
+        "register_note": "Registre uma conta para esta instância Piped. Isto irá permitir que você sincronize suas inscrições e playlists com sua conta, para que sejam armazenadas no lado do servidor. Você pode usar todas as funções sem uma conta, mas todos os dados serão armazenados no cache local do seu navegador. Por favor certifique-se de NÃO usar seu endereço de e-mail como nome de usuário e de escolher uma senha segura que não use em nenhum outro lugar."
     },
     "subscriptions": {
         "subscribed_channels_count": "Inscrito em: {0}"

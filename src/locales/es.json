@@ -155,7 +155,9 @@
         "enable_dearrow": "Activar DeArrow",
         "generate_qrcode": "Generar código QR",
         "import_from_json_csv": "Importar desde JSON/CSV",
-        "download_frame": "Descargar fotograma"
+        "download_frame": "Descargar fotograma",
+        "instance_privacy_policy": "Política de privacidad",
+        "add_to_group": "Añadir a grupo"
     },
     "titles": {
         "feed": "Contenido",
@@ -211,6 +213,8 @@
         "hours": "{amount} hora(s)",
         "days": "{amount} día(s)",
         "weeks": "{amount} semana(s)",
-        "months": "{amount} mes(es)"
+        "months": "{amount} mes(es)",
+        "login_note": "Inicia sesión con una cuenta creada en esta instancia.",
+        "register_note": "Registra una cuenta para esta instancia de Piped. Esto te permitirá sincronizar tus suscripciones y las listas de reproducción con tu cuenta, para que se almacenen en el servidor. Puedes utilizar todas las funciones sin una cuenta, pero todos los datos se almacenarán en la caché local de tu navegador. Asegúrate de NO utilizar una dirección de correo electrónico como nombre de usuario y elige una contraseña segura que no utilices en ningún otro sitio."
     }
 }

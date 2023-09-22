@@ -472,14 +472,7 @@ export default {
 
                 this.$ui = new shaka.ui.Overlay(localPlayer, this.$refs.container, videoEl);
 
-                const overflowMenuButtons = [
-                    "quality",
-                    "language",
-                    "captions",
-                    "picture_in_picture",
-                    "playback_rate",
-                    "airplay",
-                ];
+                const overflowMenuButtons = ["quality", "captions", "picture_in_picture", "playback_rate", "airplay"];
 
                 if (this.isEmbed) {
                     overflowMenuButtons.push("open_new_tab");
@@ -544,6 +537,18 @@ export default {
                         player.selectAudioLanguage(lang);
                     }
 
+                    const audioLanguages = player.getAudioLanguages();
+                    if (audioLanguages.length > 1) {
+                        const overflowMenuButtons = this.$ui.getConfiguration().overflowMenuButtons;
+                        // append language menu on index 1
+                        const newOverflowMenuButtons = [
+                            ...overflowMenuButtons.slice(0, 1),
+                            "language",
+                            ...overflowMenuButtons.slice(1),
+                        ];
+                        this.$ui.configure("overflowMenuButtons", newOverflowMenuButtons);
+                    }
+
                     if (qualityConds) {
                         var leastDiff = Number.MAX_VALUE;
                         var bestStream = null;
@@ -594,6 +599,16 @@ export default {
 
                     const autoDisplayCaptions = this.getPreferenceBoolean("autoDisplayCaptions", false);
                     this.$player.setTextTrackVisibility(autoDisplayCaptions);
+
+                    const prefSubtitles = this.getPreferenceString("subtitles", "");
+                    if (prefSubtitles !== "") {
+                        const textTracks = this.$player.getTextTracks();
+                        const subtitleIdx = textTracks.findIndex(textTrack => textTrack.language == prefSubtitles);
+                        if (subtitleIdx != -1) {
+                            this.$player.setTextTrackVisibility(true);
+                            this.$player.selectTextTrack(textTracks[subtitleIdx]);
+                        }
+                    }
                 })
                 .catch(e => {
                     console.error(e);
